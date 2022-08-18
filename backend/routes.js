@@ -110,7 +110,7 @@ function auth(req, res, next) {
                     ldapClient.bind(user.dn, credentials.password, function (error) {
                         if (error) return next(new HttpError(401, 'Invalid credentials'));
 
-                        returnOrCreateUser({ username: user.username, email: user.mail });
+                        returnOrCreateUser({ username: user.uid, email: typeof user.mail === 'object' ? user.mail[0] : user.mail });
                     });
                 });
             });
