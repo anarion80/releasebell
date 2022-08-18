@@ -93,7 +93,7 @@ function auth(req, res, next) {
             if (error) return next(new HttpError(500, error));
 
             var filter = `(|(uid=${credentials.username})(mail=${credentials.username})(username=${credentials.username})(sAMAccountName=${credentials.username}))`;
-            ldapClient.search(process.env.CLOUDRON_LDAP_USERS_BASE_DN, { filter: filter }, function (error, result) {
+            ldapClient.search(process.env.CLOUDRON_LDAP_USERS_BASE_DN, { filter: filter, scope: 'sub' }, function (error, result) {
                 if (error) return next(new HttpError(500, error));
 
                 var items = [];
