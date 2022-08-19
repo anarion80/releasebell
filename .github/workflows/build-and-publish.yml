@@ -55,16 +55,16 @@ jobs:
           # relative path to the place where source code with Dockerfile is located
           context: .
           # Note: tags has to be all lower-case
-          tags: |
-            anarion/releasebell:$(date +%s)latest
-            anarion/releasebell:latest
-            ghcr.io/anarion80/releasebell:$(date +%s)latest
-            ghcr.io/anarion80/releasebell:latest
+          # tags: |
+          #   anarion/releasebell:$(date +%s)latest
+          #   anarion/releasebell:latest
+          #   ghcr.io/anarion80/releasebell:$(date +%s)latest
+          #   ghcr.io/anarion80/releasebell:latest
           # build on feature branches, push only on main branch
-          push: ${{ github.ref == 'refs/heads/main' }}
+          push: ${{ github.ref == 'refs/heads/master' }}
           #push: ${{ github.event_name != 'pull_request' }}
-          #tags: ${{ steps.meta.outputs.tags }}
-          #labels: ${{ steps.meta.outputs.labels }}
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
 
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
