@@ -1,6 +1,7 @@
-FROM cloudron/base:3.2.0@sha256:ba1d566164a67c266782545ea9809dc611c4152e27686fd14060332dd88263ea
+FROM node:lts-alpine
+LABEL maintainer "anarion80 (https://github.com/anarion80)"
 
-RUN mkdir -p /app/code/
+#RUN mkdir -p /app/code/
 WORKDIR /app/code
 
 RUN ln -s /run/database.json /app/code/database.json
@@ -8,8 +9,13 @@ RUN ln -s /run/database.json /app/code/database.json
 ADD backend /app/code/backend
 ADD frontend /app/code/frontend
 ADD migrations /app/code/migrations
-ADD package.json index.js start.sh /app/code/
+ADD package.json index.js /app/code/
+ADD docker-entrypoint.sh /
 
-RUN npm install --production
+RUN apk add --no-cache bash su-exec \
+    && npm install --omit=dev
+#RUN npm install --production
 
-CMD [ "/app/code/start.sh" ]
+EXPOSE 3000
+
+ENTRYPOINT [ "/docker-entrypoint.sh"]

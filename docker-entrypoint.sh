@@ -9,7 +9,7 @@ echo "=> Create database.json"
 cat <<EOF > /run/database.json
 {
     "defaultEnv": "cloudron",
-    "cloudron": {
+        "cloudron": {
         "host": "${CLOUDRON_MYSQL_HOST}",
         "port": ${CLOUDRON_MYSQL_PORT},
         "user": "${CLOUDRON_MYSQL_USERNAME}",
@@ -19,10 +19,11 @@ cat <<EOF > /run/database.json
         "multipleStatements": true
     }
 }
+
 EOF
 
 echo "=> Run db-migration"
 /app/code/node_modules/.bin/db-migrate up
 
 echo "=> Start application"
-exec /usr/local/bin/gosu cloudron:cloudron node /app/code/index.js
+exec su-exec nobody:nobody node /app/code/index.js
