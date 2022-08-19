@@ -48,7 +48,7 @@ jobs:
         with:
           images: |
             docker.io/anarion/releasebell
-            gchr/anarion80/releasebell
+            gchr.io/anarion80/releasebell
 
       - name: Build image and push to Docker Hub and GitHub Container Registry
         uses: docker/build-push-action@v3
