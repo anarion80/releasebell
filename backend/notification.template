@@ -75,7 +75,7 @@
   </tr>
   <tr>
     <td style="padding: 30px 30px 30px 30px; font-size: 12px;">
-      You received this email because you follow this project on <a href="https://git.cloudron.io/cloudron/releasebell">ReleaseBell</a>.
+      You received this email because you follow this project on <a href="https://github.com/anarion80/releasebell">ReleaseBell</a>.
       If you'd prefer not to receive these emails, you can <a href="{{ settingsLink }}">change your notification settings</a>.
     </td>
   </tr>
