@@ -275,10 +275,10 @@ function sendNotificationEmail(release, callback) {
             var transport = nodemailer.createTransport(smtpTransport({
                 host: process.env.CLOUDRON_MAIL_SMTP_SERVER,
                 port: process.env.CLOUDRON_MAIL_SMTP_PORT,
-                auth: {
-                    user: process.env.CLOUDRON_MAIL_SMTP_USERNAME,
-                    pass: process.env.CLOUDRON_MAIL_SMTP_PASSWORD
-                }
+                // auth: {
+                //     user: process.env.CLOUDRON_MAIL_SMTP_USERNAME,
+                //     pass: process.env.CLOUDRON_MAIL_SMTP_PASSWORD
+                // }
             }));
 
             let versionLink;
