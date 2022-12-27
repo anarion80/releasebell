@@ -2,6 +2,8 @@
 
 A Self-Hosted Release Notification Service. Stay on top of releases for repos you star on GitHub.
 
+[![Build and Publish](https://github.com/anarion80/releasebell/actions/workflows/build-and-publish.yml/badge.svg)](https://github.com/anarion80/releasebell/actions/workflows/build-and-publish.yml)
+
 ## Installation
 
 ### Cloudron
